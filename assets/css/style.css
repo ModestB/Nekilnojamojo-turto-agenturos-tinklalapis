@@ -1,0 +1,928 @@
+/* ========================================================================== */
+/* VERIABLES */
+/* ========================================================================== */
+@font-face {
+  font-family: 'icomoon';
+  src: url("../fonts/icomoon.eot?qmvebv");
+  src: url("../fonts/icomoon.eot?qmvebv#iefix") format("embedded-opentype"), url("../fonts/icomoon.ttf?qmvebv") format("truetype"), url("../fonts/icomoon.woff?qmvebv") format("woff"), url("../fonts/icomoon.svg?qmvebv#icomoon") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+.icon-menu,
+.icon-circle-up {
+  font-size: 1.5rem;
+  color: white; }
+
+.icon-circle-up {
+  font-size: 2rem; }
+
+.icon-active.icon-radio-unchecked {
+  opacity: 1; }
+
+.icon-radio-unchecked {
+  color: #fff400; }
+
+.icon-radio-unchecked {
+  opacity: 0.4; }
+
+.icon-menu:before {
+  content: "\e9bd"; }
+
+.icon-radio-unchecked:before {
+  content: "\ea56"; }
+
+.icon-circle-up:before {
+  content: "\ea41"; }
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+@-webkit-keyframes slideRight {
+  from {
+    left: -500px; }
+  to {
+    left: 0; } }
+
+@keyframes slideRight {
+  from {
+    left: -500px; }
+  to {
+    left: 0; } }
+
+@-webkit-keyframes slideLeft {
+  from {
+    right: -500px; }
+  to {
+    right: 0; } }
+
+@keyframes slideLeft {
+  from {
+    right: -500px; }
+  to {
+    right: 0; } }
+
+/* ========================================================================== */
+/* GLOBAL */
+/* ========================================================================== */
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif; }
+
+h1, h2, h3, h4, p, a {
+  margin-left: 10px;
+  margin-right: 10px; }
+
+body {
+  overflow-x: hidden;
+  background-color: #f7f3ec; }
+
+section {
+  padding-top: 80px; }
+
+h2 {
+  font-weight: 600;
+  font-size: 1.875rem;
+  text-align: left; }
+  h2 span {
+    font-weight: 800; }
+
+a {
+  text-decoration: none; }
+
+li {
+  list-style-type: none; }
+
+.container-fluid {
+  width: 100%; }
+
+.container-small {
+  width: 100%;
+  max-width: 1150px;
+  text-align: center; }
+
+.container-large {
+  width: 100%;
+  max-width: 1350px; }
+
+.col-15 {
+  width: 15%; }
+
+.col-85 {
+  width: 85%; }
+
+.big-box {
+  position: relative; }
+
+.big-box:before {
+  content: "";
+  position: absolute;
+  background-color: #584b3b;
+  top: 0;
+  right: -100%;
+  left: 0;
+  bottom: 100px;
+  z-index: 0; }
+
+.flex-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center; }
+
+.flex--column {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center; }
+
+.flex--between {
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between; }
+
+.flex--start {
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start; }
+
+.flex--end {
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end; }
+
+.align--start {
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start; }
+
+.align--end {
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  align-items: flex-end; }
+
+.bg-primary {
+  background-color: #584b3b; }
+
+.bg-light {
+  background-color: #f7f3ec; }
+
+.text-light {
+  color: #f7f3ec; }
+
+.side-text {
+  padding-left: 20px;
+  position: relative;
+  top: 200px;
+  left: -70px; }
+  .side-text p {
+    -webkit-transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+    transform: rotate(270deg);
+    letter-spacing: 4px;
+    min-width: 250px; }
+
+.side-text-right {
+  top: 0; }
+
+/* ========================================================================== */
+/* HEADER */
+/* ========================================================================== */
+header {
+  min-height: 4.5rem; }
+  header nav li {
+    float: left; }
+    header nav li i {
+      display: none; }
+  header nav a {
+    color: #9a938c;
+    display: block;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-right: 1rem;
+    border-bottom: 2px solid transparent; }
+    header nav a:hover {
+      color: white;
+      -webkit-transition: 0.25s ease-in;
+      -o-transition: 0.25s ease-in;
+      transition: 0.25s ease-in; }
+
+.burger {
+  padding: 6px 10px;
+  border: 1px solid #f7f3ec;
+  display: none; }
+
+.up-button {
+  padding: 6px 10px;
+  display: none; }
+
+/* ========================================================================== */
+/* GALLERY */
+/* ========================================================================== */
+.slider {
+  display: none;
+  height: 650px;
+  position: relative; }
+
+.slide-left {
+  -webkit-animation-name: 'slideLeft';
+  animation-name: 'slideLeft';
+  -webkit-animation-duration: .8s;
+  animation-duration: .8s; }
+
+.slide-right {
+  -webkit-animation-name: 'slideRight';
+  animation-name: 'slideRight';
+  -webkit-animation-duration: .8s;
+  animation-duration: .8s; }
+
+.slider.show {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; }
+
+.big-box {
+  height: 100%; }
+
+.gallery {
+  overflow: hidden; }
+  .gallery .gallery-arrows {
+    position: absolute;
+    top: 20px;
+    left: -150px;
+    min-width: 250px; }
+    .gallery .gallery-arrows a {
+      padding: 15px 20px;
+      background-color: white;
+      border-radius: 5px;
+      margin-right: 0;
+      margin-left: 0; }
+  .gallery .gallery-side {
+    min-height: 600px; }
+    .gallery .gallery-side .gallery-arrows {
+      margin-top: 20px;
+      position: relative;
+      top: 0;
+      left: 50px;
+      min-width: 250px; }
+      .gallery .gallery-side .gallery-arrows a {
+        padding: 15px 20px;
+        background-color: white;
+        border-radius: 5px; }
+  .gallery .gallery-main-box {
+    margin-top: 80px; }
+  .gallery .gallery-feat-img {
+    position: relative;
+    top: 10%;
+    padding: 0  5%;
+    z-index: 10;
+    min-height: 555px;
+    min-width: 320px;
+    overflow: hidden; }
+    .gallery .gallery-feat-img img {
+      width: 100%; }
+  .gallery .col-85.flex-container {
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start; }
+  .gallery .gallery-info {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    max-width: 390px;
+    margin-top: 130px;
+    margin-bottom: 100px;
+    text-align: left; }
+    .gallery .gallery-info h2 {
+      margin-bottom: 40px;
+      font-weight: 600;
+      font-size: 1.875rem; }
+    .gallery .gallery-info p {
+      line-height: 1.625rem;
+      margin-bottom: 40px; }
+    .gallery .gallery-info a {
+      padding: 16px 32px;
+      border: 1px solid #f7f3ec;
+      border-radius: 10px; }
+      .gallery .gallery-info a img {
+        padding-right: 1rem; }
+    .gallery .gallery-info a:hover {
+      -webkit-transition: 0.5s;
+      -o-transition: 0.5s;
+      transition: 0.5s;
+      background-color: #f7f3ec;
+      color: #584b3b; }
+
+/* ========================================================================== */
+/* MAP */
+/* ========================================================================== */
+.map {
+  margin-top: 115px;
+  padding-bottom: 100px;
+  background-color: #ece2d1; }
+  .map .map-box {
+    margin-top: 60px;
+    min-height: 600px; }
+  .map .map-info {
+    min-width: 455px;
+    min-height: 600px;
+    height: 100%; }
+    .map .map-info nav li {
+      position: relative;
+      width: 65px;
+      height: 60px;
+      float: left;
+      background-color: #584b3b; }
+    .map .map-info nav li:nth-child(2)::after,
+    .map .map-info nav li:nth-child(4)::after,
+    .map .map-info nav li:nth-child(6)::after {
+      content: "";
+      border-left: 1px solid #ece2d1;
+      position: absolute;
+      bottom: 25%;
+      left: 0;
+      height: 50%; }
+    .map .map-info nav li:nth-child(3)::after,
+    .map .map-info nav li:nth-child(5)::after,
+    .map .map-info nav li:nth-child(7)::after {
+      content: "";
+      border-right: 1px solid #ece2d1;
+      position: absolute;
+      bottom: 25%;
+      left: 0;
+      height: 50%; }
+    .map .map-info nav li:hover {
+      border: none;
+      background-color: #9eb46a;
+      -webkit-transition: 0.25s ease-in;
+      -o-transition: 0.25s ease-in;
+      transition: 0.25s ease-in; }
+      .map .map-info nav li:hover::after {
+        height: 0; }
+      .map .map-info nav li:hover + li::after {
+        height: 0; }
+    .map .map-info nav li.map-info-active {
+      background-color: #9eb46a; }
+      .map .map-info nav li.map-info-active::after {
+        height: 0; }
+      .map .map-info nav li.map-info-active + li::after {
+        height: 0; }
+    .map .map-info nav a {
+      height: 100%;
+      margin: 0;
+      color: #9a938c;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box; }
+    .map .map-info nav img {
+      vertical-align: middle; }
+    .map .map-info .map-info-text {
+      display: none;
+      margin: 120px 60px 0 60px; }
+      .map .map-info .map-info-text h4 {
+        color: #888682;
+        margin: 0 0 35px 0;
+        font-size: 18px;
+        font-weight: 800;
+        text-align: left; }
+      .map .map-info .map-info-text p {
+        color: #888682;
+        margin: 0;
+        cursor: pointer; }
+      .map .map-info .map-info-text .map-info-table {
+        width: 100%;
+        padding: 20px 0;
+        border-bottom: 1px solid #ece2d1; }
+      .map .map-info .map-info-text .map-info-table:last-of-type {
+        border-bottom: none; }
+      .map .map-info .map-info-text .map-info-table:hover p {
+        color: #9eb46a; }
+      .map .map-info .map-info-text p:nth-child(2) {
+        font-weight: 700; }
+    .map .map-info .map-active {
+      display: block; }
+  .map .map-img {
+    overflow: hidden;
+    max-width: 700px;
+    max-height: 600px; }
+
+.slideshow {
+  position: relative;
+  padding: 0;
+  background-color: black;
+  height: 750px;
+  width: 100%; }
+
+.slide-container {
+  display: none;
+  height: 100%;
+  width: 100%;
+  background-repeat: no-repeat; }
+  .slide-container .container-large {
+    margin-top: 10px; }
+
+.slide-container-active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-animation-name: 'fadeIn';
+  animation-name: 'fadeIn';
+  -webkit-animation-duration: 1.5s;
+  animation-duration: 1.5s; }
+
+.slide {
+  margin: 0;
+  height: 100%;
+  max-width: 606px; }
+  .slide h2 {
+    margin: 30px 0 45px 0; }
+  .slide p {
+    text-align: center; }
+
+.slide-circles {
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  right: 50%;
+  margin-top: 50px; }
+  .slide-circles a {
+    margin: 0 4px; }
+
+/* ========================================================================== */
+/* KONTAKTAI */
+/* ========================================================================== */
+.big-box-kontaktai {
+  position: relative; }
+
+.big-box-kontaktai:before {
+  content: "";
+  position: absolute;
+  background-color: #ece2d1;
+  top: 0;
+  right: 0;
+  left: -100%;
+  bottom: -25px;
+  z-index: 0; }
+
+.kontaktai-main-box {
+  min-height: 600px;
+  margin-bottom: 170px; }
+  .kontaktai-main-box h2 {
+    text-align: left;
+    font-weight: 800; }
+  .kontaktai-main-box .kontaktai-info {
+    position: relative;
+    z-index: 1;
+    margin-top: 100px; }
+  .kontaktai-main-box .col-15 p {
+    -webkit-transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+    transform: rotate(270deg);
+    letter-spacing: 4px;
+    white-space: nowrap; }
+
+.card {
+  margin: 60px 60px 0 0;
+  text-align: left;
+  line-height: 30px; }
+  .card img {
+    margin-left: 10px; }
+  .card h4 {
+    margin-top: 40px;
+    font-weight: 600; }
+  .card p {
+    font-size: 14px;
+    color: #584b3b; }
+
+.card-contacts {
+  margin-top: 20px; }
+  .card-contacts img {
+    margin: 0;
+    margin-right: 15px; }
+
+.kontaktai-rezervacija {
+  position: relative;
+  margin-right: 50px;
+  top: 70px;
+  z-index: 0;
+  background-color: #584b3b;
+  color: #f7f3ec;
+  width: 500px;
+  min-height: 600px; }
+  .kontaktai-rezervacija div {
+    width: 300px; }
+  .kontaktai-rezervacija h2 {
+    margin: 0;
+    text-align: left;
+    font-size: 18px;
+    margin-top: 100px; }
+    .kontaktai-rezervacija h2 span {
+      font-weight: 800; }
+  .kontaktai-rezervacija form {
+    margin-top: 80px;
+    /* ========================================================================== */
+    /* TEST */
+    /* ========================================================================== */
+    /* ========================================================================== */
+    /* TEST */
+    /* ========================================================================== */ }
+    .kontaktai-rezervacija form input, .kontaktai-rezervacija form label {
+      display: block;
+      font-size: 14px;
+      padding-bottom: 10px; }
+    .kontaktai-rezervacija form .form-control {
+      position: relative;
+      height: 25px;
+      margin: 1.5rem 0; }
+      .kontaktai-rezervacija form .form-control label {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        z-index: 2;
+        width: 100%;
+        font-weight: 300;
+        text-align: left;
+        opacity: 0.5;
+        cursor: text;
+        border-bottom: 1px solid #797979;
+        -webkit-transition: 0.2s ease all;
+        -o-transition: 0.2s ease all;
+        transition: 0.2s ease all;
+        margin: 0;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none; }
+      .kontaktai-rezervacija form .form-control label:after {
+        content: "";
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 2px;
+        width: 10px;
+        visibility: hidden;
+        background-color: #ece2d1;
+        -webkit-transition: 0.5s ease all;
+        -o-transition: 0.5s ease all;
+        transition: 0.5s ease all; }
+      .kontaktai-rezervacija form .form-control input {
+        color: #f7f3ec;
+        position: relative;
+        width: 100%;
+        background-color: #584b3b;
+        border: none; }
+      .kontaktai-rezervacija form .form-control input.not-empty ~ label {
+        top: -25px;
+        font-size: 16px; }
+      .kontaktai-rezervacija form .form-control input:focus {
+        outline: none; }
+      .kontaktai-rezervacija form .form-control input:focus ~ label {
+        top: -25px;
+        font-size: 16px; }
+        .kontaktai-rezervacija form .form-control input:focus ~ label:after {
+          visibility: visible;
+          width: 100%;
+          left: 0; }
+    .kontaktai-rezervacija form #form-error {
+      font-size: 14px; }
+    .kontaktai-rezervacija form .form-error {
+      color: red; }
+    .kontaktai-rezervacija form .form-success {
+      color: #9eb46a; }
+    .kontaktai-rezervacija form button {
+      cursor: pointer;
+      letter-spacing: 0.4px;
+      color: #f7f3ec;
+      margin-top: 80px;
+      -ms-flex-item-align: start;
+      align-self: flex-start;
+      font-size: 14px;
+      padding: 15px 35px;
+      background-color: #9eb46a;
+      border-radius: 5px;
+      border: 0; }
+    .kontaktai-rezervacija form button:hover {
+      -webkit-transition: 0.5s;
+      -o-transition: 0.5s;
+      transition: 0.5s;
+      background-color: #859c4f; }
+
+.validated .form-control input.input-alert:focus ~ label:after {
+  background-color: red; }
+
+.validated .form-control input.input-alert ~ label:after {
+  background-color: red;
+  visibility: visible;
+  width: 100%;
+  left: 0; }
+
+.validated .form-control input.input-success:focus ~ label:after {
+  background-color: #9eb46a; }
+
+.validated .form-control input.input-success ~ label:after {
+  background-color: #9eb46a;
+  visibility: visible;
+  width: 100%;
+  left: 0; }
+
+/* ========================================================================== */
+/* FOOTER */
+/* ========================================================================== */
+footer {
+  min-height: 60px;
+  background-color: #302d28; }
+  footer p {
+    cursor: default;
+    color: #584b3b; }
+    footer p span {
+      color: #ece2d1; }
+
+/* ========================================================================== */
+/* MEDIA QUERIES */
+/* ========================================================================== */
+@media only screen and (max-width: 465px) {
+  .slide h2 {
+    font-size: 1.2rem; } }
+
+@media only screen and (max-width: 992px) {
+  header .burger {
+    display: block;
+    position: fixed;
+    background-color: #1b1712;
+    opacity: 0.9;
+    border-radius: 5px;
+    right: 0;
+    z-index: 1000; }
+  header .up-button {
+    display: block;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    z-index: 1000; }
+  header nav {
+    display: none; }
+  @-webkit-keyframes slideOut {
+    from {
+      height: 0; }
+    to {
+      height: 275px; } }
+  @keyframes slideOut {
+    from {
+      height: 0; }
+    to {
+      height: 275px; } }
+  header .responsive {
+    margin-top: 60px;
+    position: fixed;
+    border-radius: 5px;
+    top: 0;
+    right: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    width: 225px;
+    background-color: #1b1712;
+    opacity: 0.9;
+    z-index: 1000;
+    height: 275px;
+    overflow: hidden;
+    -webkit-animation-name: slideOut;
+    animation-name: slideOut;
+    -webkit-animation-duration: 0.5s;
+    animation-duration: 0.5s;
+    -webkit-animation-direction: backwards;
+    animation-direction: backwards;
+    -webkit-animation-timing-function: ease;
+    animation-timing-function: ease; }
+    header .responsive ul {
+      width: 100%;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column; }
+    header .responsive li {
+      text-align: left; }
+      header .responsive li a {
+        padding: 10px 10px;
+        margin: 0; }
+    header .responsive li a:hover {
+      background-color: #957f64; }
+  .gallery .gallery-main-box {
+    margin-top: 20px; }
+    .gallery .gallery-main-box .container-small {
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column; }
+  .gallery .gallery-feat-img {
+    padding: 0;
+    top: 0;
+    width: 100%; }
+  .gallery .col-15.gallery-side {
+    width: 100%;
+    min-height: 100px;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start; }
+    .gallery .col-15.gallery-side .gallery-side-text {
+      padding: 0;
+      position: unset;
+      text-align: left; }
+    .gallery .col-15.gallery-side p {
+      -webkit-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      transform: rotate(0deg);
+      letter-spacing: 4px; }
+  .gallery .col-85 {
+    width: 100%; }
+  .gallery .gallery-arrows {
+    left: -70px;
+    top: -50px; }
+  .gallery .gallery-info {
+    margin-top: 40px;
+    max-width: 100%; }
+  .gallery .big-box:before {
+    right: 0;
+    bottom: 0; }
+  .map .map-box {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column; }
+  .map .map-info {
+    width: 100%;
+    min-height: auto; }
+    .map .map-info nav {
+      background-color: #584b3b;
+      width: 100%;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center; }
+    .map .map-info .map-info-text {
+      margin: 30px 10px; }
+      .map .map-info .map-info-text h4 {
+        text-align: center; }
+  .map .map-img {
+    min-width: 300px; }
+    .map .map-img img {
+      width: 100%;
+      height: auto; }
+  .kontaktai-main-box {
+    background: #ece2d1; }
+    .kontaktai-main-box .col-85 {
+      width: 100%; }
+    .kontaktai-main-box .col-15 {
+      display: none; } }
+
+@media only screen and (max-width: 768px) {
+  .gallery .gallery-feat-img {
+    padding: 0;
+    top: 0;
+    height: auto;
+    min-height: 100%; }
+    .gallery .gallery-feat-img img {
+      -o-object-fit: cover;
+      object-fit: cover; }
+  .kontaktai-main-box {
+    overflow: hidden; }
+    .kontaktai-main-box .col-85 {
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column; }
+      .kontaktai-main-box .col-85 .card {
+        margin: 60px 0 0 0; }
+      .kontaktai-main-box .col-85 h2 {
+        text-align: center; }
+  .kontaktai-info {
+    width: 100%;
+    padding: 5% 20%; }
+    .kontaktai-info .kontaktai-inner {
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+      justify-content: space-between; }
+  .kontaktai-rezervacija {
+    top: 0;
+    margin: 0; } }
+
+@media only screen and (max-width: 576px) {
+  h2 {
+    text-align: center; }
+  .text-break {
+    display: none; }
+  .big-box {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column; }
+  .slider {
+    height: auto; }
+  .gallery .col-15.gallery-side {
+    min-height: 75px; }
+  .gallery {
+    padding-top: 30px; }
+    .gallery .gallery-arrows {
+      top: -40px;
+      left: -75px; }
+      .gallery .gallery-arrows a {
+        padding: 10px 15px; }
+    .gallery .gallery-feat-img {
+      min-width: 100%;
+      height: 200px; }
+    .gallery .gallery-info {
+      margin-bottom: 30px;
+      margin-top: 10px;
+      text-align: center; }
+      .gallery .gallery-info h2 {
+        font-size: 1rem;
+        margin: 10px; }
+      .gallery .gallery-info p {
+        font-size: 0.9rem;
+        margin-bottom: 25px; }
+      .gallery .gallery-info a {
+        padding: 8px 16px; }
+  .map {
+    margin-top: 0; }
+    .map .map-info {
+      min-width: auto;
+      min-height: 350px; }
+      .map .map-info nav {
+        overflow: hidden; }
+        .map .map-info nav ul {
+          width: 100%; }
+        .map .map-info nav li {
+          width: 14.28%; }
+      .map .map-info .map-info-text {
+        margin: 10px; }
+        .map .map-info .map-info-text h4 {
+          margin-top: 30px; }
+    .map .map-img {
+      margin-top: 50px; }
+  .kontaktai-main-box {
+    margin-bottom: 0; }
+  .kontaktai-rezervacija form button {
+    -ms-flex-item-align: center;
+    align-self: center; }
+  .kontaktai-info {
+    padding: 0;
+    margin-bottom: 60px; }
+    .kontaktai-info .kontaktai-inner {
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap; } }
