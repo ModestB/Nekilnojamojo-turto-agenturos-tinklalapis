@@ -117,11 +117,10 @@ function validation(input, regex, errorText){
 
     let test = regex.test(input.value)
     if(test) {
-        console.log('add')
         input.classList.remove('input-alert');
         input.classList.add('input-success');
+        error.innerHTML = ""
     } else {
-        console.log('remove')
         input.classList.remove('input-success');
         input.classList.add('input-alert');
         error.innerHTML = errorText;
@@ -150,16 +149,20 @@ function validation(input, regex, errorText){
 
 (function () {
     const inputs = Array.from(document.querySelectorAll('input'))
-    const emailRe = /\S+@\S+\.\S+/;
-    const phoneRe = /^(\+[0-9]{3}|8)[0-9]{8}\b/;
-    const timeRe = /((\d+\s+[d]+\.)|(\d+\S+[d]+\.))+(\s|\S)+(((\d+\s+[val]+\.))|((\d+\S+[val]+\.)))/;
 
     inputs.forEach((input) => {
         input.addEventListener('input', (e) => {
-            console.log(input)
-            validation(input, emailRe, "Patikrinkite El. pašto adresą");
-            validation(input, phoneRe, "Patikrinkite Telefono numerį");
-            validation(input, timeRe, "Patikrinkite rezervacijos laiką (x d. x val.)");  
+            switch (input.id){
+                case 'email':
+                    emailValidation()
+                    break;
+                case 'phone':
+                    phoneValidation()
+                    break;
+                case 'time':
+                    timeValidation()
+                    break;
+            }
         })
     })
 }());
@@ -167,9 +170,13 @@ function validation(input, regex, errorText){
 // CHECKS IF inputs are not empty and there is no errors
 //        TRUE shows success message. Sends information to server
 //        FALSE shows erro message
-function checkFormInputs(email, phone, time){
+function checkFormInputs(){
+    const emailInput = document.querySelector("#email");
+    const phoneInput = document.querySelector("#phone");
+    const timeInput = document.querySelector("#time");
     const error = document.querySelector("#form-error");
-    if(email.value && phone.value && time.value && !error.innerHTML){
+
+    if(emailInput.value && phoneInput.value && timeInput.value && !error.innerHTML){
         error.classList.remove('form-error')
         error.classList.add('form-success')
         error.innerHTML = "Rezervacija įvykdyta."     
@@ -179,22 +186,33 @@ function checkFormInputs(email, phone, time){
         error.innerHTML = "Neužpildytas vienas ar keli laukai"
     }
 }
+function emailValidation() {
+    const emailRe = /\S+@\S+\.\S+/;
+    const emailInput = document.querySelector("#email");
+    validation(emailInput, emailRe, "Patikrinkite El. pašto adresą");
+}
+
+function phoneValidation(){
+    const phoneRe = /^(\+[0-9]{3}|8)[0-9]{8}\b/;
+    const phoneInput = document.querySelector("#phone");
+    validation(phoneInput, phoneRe, "Patikrinkite Telefono numerį");
+}
+
+function timeValidation(){
+    const timeRe = /((\d+\s+[d]+\.)|(\d+\S+[d]+\.))+(\s|\S)+(((\d+\s+[val]+\.))|((\d+\S+[val]+\.)))/;
+    const timeInput = document.querySelector("#time");
+    validation(timeInput, timeRe, "Patikrinkite rezervacijos laiką (x d. x val.)");
+}
 
 function formValidation() {
-    const emailRe = /\S+@\S+\.\S+/;
-    const phoneRe = /^(\+[0-9]{3}|8)[0-9]{8}\b/;
-    const timeRe = /((\d+\s+[d]+\.)|(\d+\S+[d]+\.))+(\s|\S)+(((\d+\s+[val]+\.))|((\d+\S+[val]+\.)))/;
-    const emailInput = document.querySelector("#email");
-    const phoneInput = document.querySelector("#phone");
-    const timeInput = document.querySelector("#time");
     const button = document.querySelector("#formButton");
 
     button.addEventListener('click', (e)=> {
         e.preventDefault();
-        validation(emailInput, emailRe, "Patikrinkite El. pašto adresą");
-        validation(phoneInput, phoneRe, "Patikrinkite Telefono numerį");
-        validation(timeInput, timeRe, "Patikrinkite rezervacijos laiką (x d. x val.)");  
-        checkFormInputs(emailInput, phoneInput, timeInput);
+        emailValidation();
+        phoneValidation();
+        timeValidation()
+        checkFormInputs();
         document.querySelector('#rezervacija-form').classList.add("validated");
     })
 }

@@ -562,13 +562,9 @@ header {
     .kontaktai-rezervacija h2 span {
       font-weight: 800; }
   .kontaktai-rezervacija form {
-    margin-top: 80px;
-    /* ========================================================================== */
-    /* TEST */
-    /* ========================================================================== */
-    /* ========================================================================== */
-    /* TEST */
-    /* ========================================================================== */ }
+    margin-top: 80px; }
+    .kontaktai-rezervacija form .inner-form {
+      position: relative; }
     .kontaktai-rezervacija form input, .kontaktai-rezervacija form label {
       display: block;
       font-size: 14px;
@@ -629,8 +625,11 @@ header {
           width: 100%;
           left: 0; }
     .kontaktai-rezervacija form #form-error {
-      font-size: 14px; }
-    .kontaktai-rezervacija form .form-error {
+      position: absolute;
+      top: 225px;
+      left: 0;
+      right: 0;
+      font-size: 14px;
       color: red; }
     .kontaktai-rezervacija form .form-success {
       color: #9eb46a; }
@@ -652,19 +651,19 @@ header {
       transition: 0.5s;
       background-color: #859c4f; }
 
-.validated .form-control input.input-alert:focus ~ label:after {
+.form-control input.input-alert:focus ~ label:after {
   background-color: red; }
 
-.validated .form-control input.input-alert ~ label:after {
+.form-control input.input-alert ~ label:after {
   background-color: red;
   visibility: visible;
   width: 100%;
   left: 0; }
 
-.validated .form-control input.input-success:focus ~ label:after {
+.form-control input.input-success:focus ~ label:after {
   background-color: #9eb46a; }
 
-.validated .form-control input.input-success ~ label:after {
+.form-control input.input-success ~ label:after {
   background-color: #9eb46a;
   visibility: visible;
   width: 100%;
@@ -685,10 +684,6 @@ footer {
 /* ========================================================================== */
 /* MEDIA QUERIES */
 /* ========================================================================== */
-@media only screen and (max-width: 465px) {
-  .slide h2 {
-    font-size: 1.2rem; } }
-
 @media only screen and (max-width: 992px) {
   header .burger {
     display: block;

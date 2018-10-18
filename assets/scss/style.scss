@@ -582,14 +582,14 @@ header{
     }
     form{
         margin-top: 80px;
+        .inner-form{
+            position: relative;
+        }
         input, label{
             display: block;
             font-size: 14px; 
             padding-bottom: 10px;
         }
-/* ========================================================================== */
-/* TEST */
-/* ========================================================================== */
         .form-control{
             position: relative;
             height: 25px;
@@ -654,29 +654,15 @@ header{
             }
         }
 
-/* ========================================================================== */
-/* TEST */
-/* ========================================================================== */
-        // input{
-        //     position: relative;
-        //     background-color: $color-primary;
-        //     margin: 1rem 0;
-        //     border: none;
-        //     border-bottom:1px solid #797979;
-        //     color: $color-light;
-        //     
-        // }
-        // input:focus{
-        //     outline: none;
-        //     transition: border-width 0.6 linear;
-        //     border-bottom:1px solid $color-success;
-        // }
         #form-error{
+            position: absolute;
+            top: 225px;
+            left: 0;
+            right: 0;
             font-size: 14px;
-        }
-        .form-error{
             color: red;
         }
+
         .form-success{
             color: $color-success;
         }
@@ -699,7 +685,7 @@ header{
     }
 }
 
-.validated .form-control{
+.form-control{
     input.input-alert:focus ~ label{
         &:after{
             background-color:  red;
@@ -746,32 +732,6 @@ footer{
 /* ========================================================================== */
 /* MEDIA QUERIES */
 /* ========================================================================== */
-
-@media only screen and (max-width: 465px) {
-    // .map{
-    //     .map-info{
-    //         min-width: auto;
-    //         nav{
-    //             overflow: hidden;
-    //             li{
-    //                 width: 55px;
-    //             }
-    //         }
-    //         .map-info-text{
-    //             margin: 10px;
-    //         }
-    //     } 
-    // } 
-    .slide{
-        h2{
-            font-size: 1.2rem;
-        }
-    }
-}
-
-@media only screen and (max-width: 800px) {
-    
-}
 
 @media only screen and (max-width: 992px) {
     header{
@@ -839,7 +799,6 @@ footer{
     .gallery{
         .gallery-main-box{
             margin-top: 20px;
-            //background: $color-primary;
             .container-small{
                 flex-direction: column;
             }
@@ -934,7 +893,6 @@ footer{
             min-height: 100%;
             img{
                 object-fit: cover;
-                // width: 100%;
             }
         }
     }
