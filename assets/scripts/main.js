@@ -293,7 +293,7 @@ function checkFormInputs(){
     if(emailInput.value && phoneInput.value && timeInput.value && !error.innerHTML){
         error.classList.remove('form-error')
         error.classList.add('form-success')
-        error.innerHTML = "Rezervacija įvykdyta."     
+        error.innerHTML = "Rezervacija įvykdyta." 
     } else {
         error.classList.remove('form-success')
         error.classList.add('form-error')
