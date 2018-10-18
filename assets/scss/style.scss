@@ -660,9 +660,12 @@ header{
             left: 0;
             right: 0;
             font-size: 14px;
-            color: red;
+
         }
 
+        .form-error{
+            color: red;
+        }
         .form-success{
             color: $color-success;
         }

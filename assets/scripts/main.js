@@ -1,4 +1,4 @@
-// SHOWS menu when burger menu is clicked
+// SHOWS nav menu when burger menu is clicked
 (function (){
     const nav = document.querySelector("nav");
     try {
@@ -21,6 +21,113 @@
     })
 }());
 
+
+// =============================================================================
+// SLIDER
+// =============================================================================
+
+// FROM all slides removes show class
+// show class adds display: flex
+function removeSlide(){
+    const slides = Array.from(document.querySelectorAll(".slider"));
+    slides.forEach((slide) => {
+        slide.classList.remove('show');
+    });
+};
+
+// SHOWS slide with slideIndex == index
+// ADDS show class
+function showCorrectSlide(index){
+    const slides = Array.from(document.querySelectorAll(".slider"));
+    slides.forEach((slide, slideIndex) => {
+        if(index == slideIndex){
+            slide.classList.add('show');
+        }
+    });
+};
+
+// RETURNS current slide index
+// current slide always has show class
+function getCurrentSlideIndex(){
+    const slides = Array.from(document.querySelectorAll(".slider"));
+    let indexToReturn;
+    slides.forEach((slide, index) => {     
+        if(slide.classList.contains('show')){
+           indexToReturn = index;        
+        }         
+    });
+    return indexToReturn;
+};
+
+// RETURNS tolal number of slides
+function getSlidesLength(){
+    const slides = Array.from(document.querySelectorAll(".slider"));
+    return slides.length;
+};
+
+function decreaseSlideIndex(index, length){
+    if(index > 0 && index <= length-1){
+        --index;
+    } else {
+        index = length-1;
+    };
+    return index;
+};
+
+function increaseSlideIndex(index, length){
+    if (index < length-1){
+        ++index;
+    } else {
+        index = 0;
+    };
+    return index;
+};
+
+// ADDS slide left animation to slides
+function addSlideLeft(){
+    const slides = Array.from(document.querySelectorAll(".slider"));
+    slides.forEach((slide) => {
+        slide.classList.remove('slide-right')
+        slide.classList.add('slide-left')
+    });
+};
+
+// ADDS slide right animation to slides
+function addSlideRight(){
+    const slides = Array.from(document.querySelectorAll(".slider"));
+    slides.forEach((slide) => {
+        slide.classList.remove('slide-left')
+        slide.classList.add('slide-right')
+    });
+};
+
+// SET BUTTON FUNCTIONALITY
+(function (){
+    const leftArrows = Array.from(document.querySelectorAll(".left-arrow"));
+    const rightArrows = Array.from(document.querySelectorAll(".right-arrow"));
+
+    leftArrows.forEach(leftArrow => {
+        leftArrow.addEventListener('click', (e) => {
+            e.preventDefault();
+            let correctIndex = decreaseSlideIndex(getCurrentSlideIndex(), getSlidesLength())
+            removeSlide()
+            addSlideLeft()
+            showCorrectSlide(correctIndex)
+        })
+    });
+
+    rightArrows.forEach(rightArrow => {
+        rightArrow.addEventListener('click', (e) => {
+            e.preventDefault();
+            let correctIndex = increaseSlideIndex(getCurrentSlideIndex(), getSlidesLength())
+            removeSlide()
+            addSlideRight()
+            showCorrectSlide(correctIndex)
+        })
+    });
+
+}());
+
 // GETS infoBlock by eleSelector
 // CHECK if individual block id mathces index
 //       TRUE add eleClass ---> display: block
@@ -40,7 +147,7 @@ function showCorrectInfoId(index, eleSelector, eleClass){
 // FOREACH element if index matches ele.hash ---> (a href="#index")
 //         TRUE makes button active calls showCorrectInfoId()
 //         ELSE removes from button active style
-function removeMapActive(mapNavElements, index){
+function checkMapActive(mapNavElements, index){
     mapNavElements.forEach((ele) => {
         if(ele.hash === index){
             ele.parentNode.classList.add('map-info-active');
@@ -57,7 +164,7 @@ function removeMapActive(mapNavElements, index){
     mapNavElements.forEach((ele) => {
         ele.addEventListener('click', (e) => {
             e.preventDefault();
-            removeMapActive(mapNavElements, ele.hash);
+            checkMapActive(mapNavElements, ele.hash);
         });
     });
 }());
@@ -84,7 +191,7 @@ function showCorrectInfo(eleIndex, eleSeletor, eleClass){
 //         TRUE makes circle active
 //         ELSE removes from circle active style
 // !!! Similar to removeMapActive. Need optimization
-function removeCircleActive(circles, circleIndex){
+function checkCircleActive(circles, circleIndex){
     circles.forEach((ele, index) => {
         if(index === circleIndex){
             ele.classList.add('icon-active');
@@ -102,7 +209,7 @@ function removeCircleActive(circles, circleIndex){
     circles.forEach((circle, index) => {
         circle.parentNode.addEventListener('click', (e) => {
             e.preventDefault(); 
-            removeCircleActive(circles, index);
+            checkCircleActive(circles, index);
         });
     });
 }());
@@ -114,13 +221,8 @@ function removeCircleActive(circles, circleIndex){
 //     IF test returns false show error
 function validation(input, regex, errorText){
     const error = document.querySelector("#form-error");
-
-    input.addEventListener('focusin', () => {
-        //input.classList.remove('input-alert')
-        error.innerHTML = ""
-    });
-
     let test = regex.test(input.value)
+
     if(test) {
         input.classList.remove('input-alert');
         input.classList.add('input-success');
@@ -132,6 +234,11 @@ function validation(input, regex, errorText){
     };
 };
 
+// ON INPUT 'focusin' and 'focusout' 
+// CHECKS if input is not empty ---> input.value.length > 0
+//  TRUE add not-empty class to input
+//  ELSE removes not-empty class from input
+//  not-empty class makes input label to show above input
 (function () {
     const inputs = Array.from(document.querySelectorAll('input'))
     inputs.forEach((input) => {
@@ -152,6 +259,8 @@ function validation(input, regex, errorText){
     })
 }());
 
+// ON FORM input checks input id
+// Depending on the id calls specific validation function
 (function () {
     const inputs = Array.from(document.querySelectorAll('input'))
 
@@ -191,18 +300,21 @@ function checkFormInputs(){
         error.innerHTML = "Neužpildytas vienas ar keli laukai"
     }
 }
+// EMAIL validation using  REGEX  set of code ---> /\S+@\S+\.\S+/
 function emailValidation() {
     const emailRe = /\S+@\S+\.\S+/;
     const emailInput = document.querySelector("#email");
     validation(emailInput, emailRe, "Patikrinkite El. pašto adresą");
 }
 
+// PHONE validation using  REGEX  set of code ---> /^(\+[0-9]{3}|8)[0-9]{8}\b/
 function phoneValidation(){
     const phoneRe = /^(\+[0-9]{3}|8)[0-9]{8}\b/;
     const phoneInput = document.querySelector("#phone");
     validation(phoneInput, phoneRe, "Patikrinkite Telefono numerį");
 }
 
+// TME validation using  REGEX  set of code ---> /((\d+\s+[d]+\.)|(\d+\S+[d]+\.))+(\s|\S)+(((\d+\s+[val]+\.))|((\d+\S+[val]+\.)))/
 function timeValidation(){
     const timeRe = /((\d+\s+[d]+\.)|(\d+\S+[d]+\.))+(\s|\S)+(((\d+\s+[val]+\.))|((\d+\S+[val]+\.)))/;
     const timeInput = document.querySelector("#time");
@@ -219,105 +331,9 @@ function timeValidation(){
         phoneValidation();
         timeValidation()
         checkFormInputs();
-        document.querySelector('#rezervacija-form').classList.add("validated");
     })
 }());
 
-// =============================================================================
-// SLIDER
-// =============================================================================
-function removeSliderShow(){
-    const slides = Array.from(document.querySelectorAll(".slider"));
-    slides.forEach((slide) => {
-        slide.classList.remove('show');
-    });
-};
-
-function getCurrentSlideIndex(){
-    const slides = Array.from(document.querySelectorAll(".slider"));
-    let indexToReturn;
-    slides.forEach((slide, index) => {     
-        if(slide.classList.contains('show')){
-           indexToReturn = index;        
-        }         
-    });
-    return indexToReturn;
-};
-
-function getSlidesLength(){
-    const slides = Array.from(document.querySelectorAll(".slider"));
-    return slides.length;
-};
-
-function decreaseSlideIndex(index, length){
-    if(index > 0 && index <= length-1){
-        --index;
-    } else {
-        index = length-1;
-    };
-    return index;
-};
-
-function increaseSlideIndex(index, length){
-    if (index < length-1){
-        ++index;
-    } else {
-        index  = 0;
-    };
-    return index;
-};
-
-function showCorrectSlide(index){
-    const slides = Array.from(document.querySelectorAll(".slider"));
-    slides.forEach((slide, slideIndex) => {
-        if(index == slideIndex){
-            slide.classList.add('show');
-        }
-    });
-};
-
-function addSlideLeft(){
-    const slides = Array.from(document.querySelectorAll(".slider"));
-    slides.forEach((slide) => {
-        slide.classList.remove('slide-right')
-        slide.classList.add('slide-left')
-    });
-};
-
-function addSlideRight(){
-    const slides = Array.from(document.querySelectorAll(".slider"));
-    slides.forEach((slide) => {
-        slide.classList.remove('slide-left')
-        slide.classList.add('slide-right')
-    });
-};
-
-// SET BUTTON FUNCTIONALITY
-(function (){
-    const leftArrows = Array.from(document.querySelectorAll(".left-arrow"));
-    const rightArrows = Array.from(document.querySelectorAll(".right-arrow"));
-
-    leftArrows.forEach(leftArrow => {
-        leftArrow.addEventListener('click', (e) => {
-            e.preventDefault();
-            let correctIndex = decreaseSlideIndex(getCurrentSlideIndex(), getSlidesLength())
-            removeSliderShow()
-            addSlideLeft()
-            showCorrectSlide(correctIndex)
-        })
-    });
-
-    rightArrows.forEach(rightArrow => {
-        rightArrow.addEventListener('click', (e) => {
-            e.preventDefault();
-            let correctIndex = increaseSlideIndex(getCurrentSlideIndex(), getSlidesLength())
-            removeSliderShow()
-            addSlideRight()
-            showCorrectSlide(correctIndex)
-        })
-    });
-
-}());
 
 (function() {
     // Add smooth scrolling

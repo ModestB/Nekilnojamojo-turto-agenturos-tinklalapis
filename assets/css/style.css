@@ -629,7 +629,8 @@ header {
       top: 225px;
       left: 0;
       right: 0;
-      font-size: 14px;
+      font-size: 14px; }
+    .kontaktai-rezervacija form .form-error {
       color: red; }
     .kontaktai-rezervacija form .form-success {
       color: #9eb46a; }
