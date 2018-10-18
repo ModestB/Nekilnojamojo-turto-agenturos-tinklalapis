@@ -1,5 +1,5 @@
 // SHOWS menu when burger menu is clicked
-function responsiveMenu(){
+(function (){
     const nav = document.querySelector("nav");
     try {
         const burgerIcon = document.querySelector(".burger");
@@ -11,7 +11,9 @@ function responsiveMenu(){
     } catch (error) {
         
     };
-};
+}());
+
+// COLLAPSE nav on scroll
 (function (){
     const nav = document.querySelector("nav");
     window.addEventListener('scroll', () => {
@@ -50,7 +52,7 @@ function removeMapActive(mapNavElements, index){
 };
 
 // ADD event listener for map window buttons
-function mapResponsive() {
+(function () {
     const mapNavElements = document.querySelectorAll('.map-info li a');
     mapNavElements.forEach((ele) => {
         ele.addEventListener('click', (e) => {
@@ -58,7 +60,8 @@ function mapResponsive() {
             removeMapActive(mapNavElements, ele.hash);
         });
     });
-};
+}());
+
 
 // GETS infoBlock by eleSelector
 // CHECK if individual block id mathces index
@@ -92,7 +95,8 @@ function removeCircleActive(circles, circleIndex){
     });
 };
 
-function slideShow(){
+// SLIDE SHOW CIRCLES FUNCTIONALITY ON click
+(function slideShow(){
     const circles = document.querySelectorAll('.slide-circles a span'); 
 
     circles.forEach((circle, index) => {
@@ -101,7 +105,8 @@ function slideShow(){
             removeCircleActive(circles, index);
         });
     });
-};
+}());
+
 
 // ADD focusin event listener --> removes error message
 // ADD focusout event listener
@@ -204,7 +209,8 @@ function timeValidation(){
     validation(timeInput, timeRe, "Patikrinkite rezervacijos laiką (x d. x val.)");
 }
 
-function formValidation() {
+// FORM VALIDATION ON SUBMIT
+(function() {
     const button = document.querySelector("#formButton");
 
     button.addEventListener('click', (e)=> {
@@ -215,7 +221,8 @@ function formValidation() {
         checkFormInputs();
         document.querySelector('#rezervacija-form').classList.add("validated");
     })
-}
+}());
+
 // =============================================================================
 // SLIDER
 // =============================================================================
@@ -224,7 +231,7 @@ function removeSliderShow(){
     slides.forEach((slide) => {
         slide.classList.remove('show');
     });
-}
+};
 
 function getCurrentSlideIndex(){
     const slides = Array.from(document.querySelectorAll(".slider"));
@@ -235,12 +242,12 @@ function getCurrentSlideIndex(){
         }         
     });
     return indexToReturn;
-}
+};
 
 function getSlidesLength(){
     const slides = Array.from(document.querySelectorAll(".slider"));
     return slides.length;
-}
+};
 
 function decreaseSlideIndex(index, length){
     if(index > 0 && index <= length-1){
@@ -249,7 +256,7 @@ function decreaseSlideIndex(index, length){
         index = length-1;
     };
     return index;
-}
+};
 
 function increaseSlideIndex(index, length){
     if (index < length-1){
@@ -258,7 +265,7 @@ function increaseSlideIndex(index, length){
         index  = 0;
     };
     return index;
-}
+};
 
 function showCorrectSlide(index){
     const slides = Array.from(document.querySelectorAll(".slider"));
@@ -267,7 +274,7 @@ function showCorrectSlide(index){
             slide.classList.add('show');
         }
     });
-}
+};
 
 function addSlideLeft(){
     const slides = Array.from(document.querySelectorAll(".slider"));
@@ -275,7 +282,7 @@ function addSlideLeft(){
         slide.classList.remove('slide-right')
         slide.classList.add('slide-left')
     });
-}
+};
 
 function addSlideRight(){
     const slides = Array.from(document.querySelectorAll(".slider"));
@@ -283,10 +290,10 @@ function addSlideRight(){
         slide.classList.remove('slide-left')
         slide.classList.add('slide-right')
     });
-}
+};
 
-
-function setButtonFunct(){
+// SET BUTTON FUNCTIONALITY
+(function (){
     const leftArrows = Array.from(document.querySelectorAll(".left-arrow"));
     const rightArrows = Array.from(document.querySelectorAll(".right-arrow"));
 
@@ -310,17 +317,7 @@ function setButtonFunct(){
         })
     });
 
-}
-
-// =============================================================================
-// FUNCTION CALLS
-// =============================================================================
-setButtonFunct()
-formValidation();
-slideShow();
-mapResponsive();
-responsiveMenu();
-
+}());
 
 (function() {
     // Add smooth scrolling
