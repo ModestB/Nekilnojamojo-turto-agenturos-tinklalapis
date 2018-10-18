@@ -214,7 +214,6 @@ function checkCircleActive(circles, circleIndex){
     });
 }());
 
-
 // ADD focusin event listener --> removes error message
 // ADD focusout event listener
 //     TEST regex
@@ -294,6 +293,8 @@ function checkFormInputs(){
         error.classList.remove('form-error')
         error.classList.add('form-success')
         error.innerHTML = "Rezervacija įvykdyta." 
+        const form = document.querySelector('#rezervacija-form');
+        form.submit();
     } else {
         error.classList.remove('form-success')
         error.classList.add('form-error')
@@ -321,7 +322,7 @@ function timeValidation(){
     validation(timeInput, timeRe, "Patikrinkite rezervacijos laiką (x d. x val.)");
 }
 
-// FORM VALIDATION ON SUBMIT
+//FORM VALIDATION ON SUBMIT
 (function() {
     const button = document.querySelector("#formButton");
 
@@ -333,7 +334,6 @@ function timeValidation(){
         checkFormInputs();
     })
 }());
-
 
 (function() {
     // Add smooth scrolling
